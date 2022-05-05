@@ -7,3 +7,7 @@
 
 /venv
 *__pycache__
+.env 
+# added in .env in class
+# if something in the folder/file structure is grayed out, it's not being tracked
+
