@@ -1,4 +1,4 @@
-import json
+
 from flask import Blueprint, jsonify, request, abort, make_response
 from app.models.cats import Cat
 from app import db

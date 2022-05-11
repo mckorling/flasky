@@ -29,6 +29,7 @@ def create_app(testing=None):
     # tell flask about our new cats model (in model/cats.py)
     # we import here to avoid circular imports becacuse db is imported at
     # the top of model/cats.py
+    # the '.'models is shorthand for app.models... shorthand for the current directory
     from .models.cats import Cat
     # (now we can do flask db init in terminal (only ONCE per project))
     # then generate a migration in terminal: flask db migrate -m "type some message"
@@ -38,9 +39,14 @@ def create_app(testing=None):
     # can go into postgres to check, shortcut to correct database
     # psql -U postgres -d cats_development
     # \d to see table layout
+    from .models.humans import Human
+    # tell Flask that we have a new model, just import, Flask knows what to do
+    # next migrate to database
     
 
     from .routes.cats import cats_bp
     app.register_blueprint(cats_bp)
+    from .routes.humans import humans_bp
+    app.register_blueprint(humans_bp)
 
     return app
