@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from dotenv import load_dotenv
 import os
+from flask_cors import CORS # front end flasky need
 
 # to use the tools above, we need to create objects for them
 # create it in global scope so that other files will be able to use it
@@ -13,6 +14,7 @@ load_dotenv() # this will load in the .env file into the environmental variables
 def create_app(testing=None):
     # __name__ stores the name of the module we're in (placeholder)
     app = Flask(__name__)
+    CORS(app) # front end flasky need
 
     # connect our database to app and tell it where it is
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False # gets rid of some little error
